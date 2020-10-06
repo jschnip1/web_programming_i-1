@@ -6,7 +6,6 @@
 </head>
 <body>
 <h3 class="w3-block w3-teal w3-center">Basic Todo List, version 1</h3>
-<hr/>
 <table class="w3-table w3-striped w3-bordered w3-border">
 %for row in rows:
     <tr>

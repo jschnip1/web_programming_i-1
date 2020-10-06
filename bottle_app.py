@@ -25,7 +25,7 @@ def get_show_list():
 def get_set_status(id,value):
     connection = sqlite3.connect("todo.db")
     cursor = connection.cursor()
-    cursor.execute("update todo set status= 0 where id =?", (id, value,))
+    cursor.execute("update todo set status= ? where id =?", (id, value,))
     connection.commit()
     cursor.close()
     redirect('/')
@@ -41,16 +41,6 @@ def post_new_item():
     connection = sqlite3.connect("todo.db")
     cursor = connection.cursor()
     cursor.execute("insert into todo (task, status) values (?,?)", (new_item, 1))
-    connection.commit()
-    cursor.close()
-    redirect('/')
-
-@get('/delete_item/<id:int>')
-def get_delete_item(id):
-    print("we want to delete #" + str(id))
-    connection = sqlite3.connect("todo.db")
-    cursor = connection.cursor()
-    cursor.execute("delete from todo where id=?", (id,))
     connection.commit()
     cursor.close()
     redirect('/')
@@ -71,10 +61,21 @@ def post_update_item():
     updated_item = request.forms.get("updated_item").strip()
     connection = sqlite3.connect("todo.db")
     cursor = connection.cursor()
-    cursor.execute("update todo set task=? where id =?", (id, updated_item,))
+    cursor.execute("update todo set task=? where id=?", (updated_item, id,))
     connection.commit()
     cursor.close()
     redirect('/')
+
+@get('/delete_item/<id:int>')
+def get_delete_item(id):
+    print("we want to delete #" + str(id))
+    connection = sqlite3.connect("todo.db")
+    cursor = connection.cursor()
+    cursor.execute("delete from todo where id=?", (id,))
+    connection.commit()
+    cursor.close()
+    redirect('/')
+
 
 
 if ON_PYTHONANYWHERE:
