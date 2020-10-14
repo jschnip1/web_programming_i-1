@@ -19,7 +19,7 @@
         <td>
         %if row[2]==0:
             <a href="/set_status/{{row[0]}}/1"><i class="material-icons">check_box_outline_blank</i></a>
-        %else
+        %else:
             <a href="/set_status/{{row[0]}}/0"><i class="material-icons">check_box</i></a>
         %end
         </td>
