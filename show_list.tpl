@@ -12,7 +12,6 @@
         <td>
             <a href="/update_item/{{row[0]}}"><i class="material-icons">edit</i></a>
         </td>
-
         <td>
             {{row[1]}}
         </td>
@@ -29,6 +28,6 @@
     </tr>
 %end
 </table>
-<a href="/new_item"><button class="w3-button w3-block w3-teal">New Item</button></a>
+<a href="/new_item"><button class="w3-button w3-block w3-teal">New item...</button></a>
 </body>
 </html>

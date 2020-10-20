@@ -29,10 +29,10 @@ def get_sandbox():
     return template("sandbox")
 
 @get('/set_status/<id:int>/<value:int>')
-def get_set_status(id,value):
+def get_set_status(id, value):
     connection = sqlite3.connect("todo.db")
     cursor = connection.cursor()
-    cursor.execute("update todo set status= ? where id =?", (id, value,))
+    cursor.execute("update todo set status=? where id =?", (id, value,))
     connection.commit()
     cursor.close()
     redirect('/')
@@ -64,7 +64,7 @@ def get_update_item(id):
 
 @post('/update_item')
 def post_update_item():
-    id = int(request.form.get("id").strip())
+    id = int(request.forms.get("id").strip())
     updated_item = request.forms.get("updated_item").strip()
     connection = sqlite3.connect("todo.db")
     cursor = connection.cursor()
